@@ -9,14 +9,10 @@ public class Principal {
         miPelicula.evalua(10);
         miPelicula.evalua(10);
         miPelicula.evalua(7.8);
+        System.out.println(miPelicula.getTotalDelasEvaluaciones());
+        System.out.println(miPelicula.calculaMedia());
+        miPelicula.();
 
-        System.out.println(miPelicula.sumaDeLasEvaluaciones);
-        System.out.println(miPelicula.totalDelasEvaluaciones);
-        System.out.println(miPelicula.calculaMedia());
-        System.out.println("****************************");
-        miPelicula.sumaDeLasEvaluaciones = 2;
-        miPelicula.totalDelasEvaluaciones = 1;();
-        System.out.println(miPelicula.calculaMedia());
 
         Pelicula otraPelicula = new Pelicula();
         otraPelicula.nombre = "Matrix";

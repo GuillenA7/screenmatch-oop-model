@@ -6,6 +6,10 @@ public class Pelicula {
     private double sumaDeLasEvaluaciones;
     private int totalDelasEvaluaciones;
 
+    int getTotalDelasEvaluaciones(){
+        return totalDelasEvaluaciones;
+    }
+
     void muestraFichaTecnica() {
         System.out.println("El nombre de la película es: " + nombre);
         System.out.println("Su fecha de lanzamiento es: " + fechaDeLanzamiento);
