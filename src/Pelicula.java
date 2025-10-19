@@ -3,8 +3,8 @@ public class Pelicula {
     int fechaDeLanzamiento;
     int duracionEnMinutos;
     boolean incluidoEnElPlan;
-    double sumaDeLasEvaluaciones;
-    int totalDelasEvaluaciones;
+    private double sumaDeLasEvaluaciones;
+    private int totalDelasEvaluaciones;
 
     void muestraFichaTecnica() {
         System.out.println("El nombre de la película es: " + nombre);
