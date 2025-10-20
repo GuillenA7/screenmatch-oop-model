@@ -8,6 +8,14 @@ public class Episodio implements Clasificacion {
     private Serie serie;
     private int totalVisualizaciones;
 
+    public int getTotalVisualizaciones() {
+        return totalVisualizaciones;
+    }
+
+    public void setTotalVisualizaciones(int totalVisualizaciones) {
+        this.totalVisualizaciones = totalVisualizaciones;
+    }
+
     public int getNumero() {
         return numero;
     }
@@ -24,7 +32,7 @@ public class Episodio implements Clasificacion {
         this.nombre = nombre;
     }
 
-    public Serie getSerie() {
+    public Serie getSerie(Serie casaDragon) {
         return serie;
     }
 
