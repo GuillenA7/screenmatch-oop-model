@@ -4,13 +4,11 @@ import com.alura.screenmatch.modelos.Episodio;
 import com.alura.screenmatch.modelos.Pelicula;
 import com.alura.screenmatch.modelos.Serie;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 
 public class Principal {
     public static void main(String[] args) {
-        Pelicula miPelicula = new Pelicula();
-        miPelicula.setNombre("Encanto");
+        Pelicula miPelicula = new Pelicula("Encanto");
         miPelicula.setFechaDeLanzamiento(2021);
         miPelicula.setDuracionEnMinutos(180);
         System.out.println("Duración de la película: " + miPelicula.getDuracionEnMinutos());
@@ -32,8 +30,7 @@ public class Principal {
         lost.setMinutosPorEpisodio(50);
         System.out.println("Duracion de la série: " + lost.getDuracionEnMinutos());
 
-        Pelicula otraPelicula = new Pelicula();
-        otraPelicula.setNombre("Avatar");
+        Pelicula otraPelicula = new Pelicula("Avatar");
         otraPelicula.setFechaDeLanzamiento(2023);
         otraPelicula.setDuracionEnMinutos(200);
 
@@ -52,8 +49,7 @@ public class Principal {
         episodio.setTotalVisualizaciones(300);
         filtro.filtra(episodio);
 
-        var peliculaDeBruno = new Pelicula();
-        peliculaDeBruno.setNombre("El señor de los anillos");
+        var peliculaDeBruno = new Pelicula("El señor de los anillos");
         peliculaDeBruno.setDuracionEnMinutos(180);
         peliculaDeBruno.setFechaDeLanzamiento(2001);
 
@@ -64,9 +60,7 @@ public class Principal {
 
         System.out.println("Tamaño de la lista: : " + listaDePeliculas.size());
         System.out.println("La primera pelicula es: " + listaDePeliculas.get(0).getNombre());
-
         System.out.println(listaDePeliculas.toString());
-
         System.out.println("toString de la pelicula: " + listaDePeliculas.get(0).toString());
     }
 }
