@@ -1,29 +1,41 @@
-# 🎬 ScreenMatch – Java Object-Oriented Programming Project
+# 🎬 ScreenMatch – Working with Java Lists and Collections
 
-This project was developed as part of the **[Alura](https://www.aluracursos.com/) [ONE](https://www.oracle.com/mx/education/oracle-next-education/) – Java: Applying Object-Oriented Programming** course.  
-
-It simulates a movie and series catalog application called **ScreenMatch**, designed to practice the core principles of **Object-Oriented Programming (OOP)** in Java.
+> 🧭 This branch corresponds to the **Java: Working with Lists and Data Collections** course
+> 
+> from the [Alura](https://www.aluracursos.com/) [ONE](https://www.oracle.com/mx/education/oracle-next-education/) program.
+> 
+> It continues directly from the previous branch: `curso2-aplicando-poo`.
 
 ---
 
 ## 🧠 Project Overview
 
-ScreenMatch is a console-based Java application where users can manage and rate movies and TV series.  
+This version of **ScreenMatch** expands the original object-oriented project to include
+**Java Collections Framework**, exploring **lists, ordering, interfaces, and maps**.
 
-Throughout its development, the project explores key OOP pillars such as:
+The goal is to understand how to organize, compare, and manipulate groups of objects efficiently —
 
-- **Encapsulation** – keeping data private and accessible through getters/setters.  
-- **Inheritance** – sharing common properties and behaviors across classes.  
-- **Polymorphism** – allowing objects to behave differently based on their type.  
-- **Abstraction** – modeling real-world entities through meaningful classes.
+using tools like `List`, `ArrayList`, `LinkedList`, `Collections`, and `HashMap`.
 
 ---
 
-## 🧩 Class Structure
+## 🧩 Key Topics Learned
+
+In this stage, you applied the following key Java concepts:
+
+* **Interfaces and abstraction** (`List`, `Comparable`, `Map`)
+* **Collections Framework** (`ArrayList`, `LinkedList`, `Vector`, `Stack`)
+* **Sorting and ordering** with `Comparable` and `Comparator`
+* **Maps and HashMaps** for key-value data structures
+* **Programming to interfaces** (using `List` instead of a concrete implementation)
+* **Polymorphism in collections** (storing objects of subclasses in generic lists)
+
+---
+
+## 🧱 Project Structure
 
 ```
-
-com.aluracursos.screenmatch
+com.alura.screenmatch
 │
 ├── modelos
 │   ├── Titulo.java
@@ -31,59 +43,88 @@ com.aluracursos.screenmatch
 │   ├── Serie.java
 │   └── Episodio.java
 │
-└── calculos
-├── Clasificable.java
-├── FiltroRecomendacion.java
-└── CalculadoraDeTiempo.java
+├── calculos
+│   ├── Clasificable.java
+│   ├── FiltroRecomendacion.java
+│   └── CalculadoraDeTiempo.java
+│
+└── principal
+    ├── Principal.java
+    └── PrincipalConListas.java
+```
 
-````
+### 🗂️ Highlights of this version
 
-### 📄 Key Classes
-- **`Titulo`** – Base class representing general media (title, release year, duration, rating, etc.).
-- **`Pelicula`** – Extends `Titulo`; includes specific behavior for movies.
-- **`Serie`** – Extends `Titulo`; includes attributes like seasons, episodes, and episodes per season.
-- **`Episodio`** – Represents an episode that belongs to a series.
-- **`Clasificable` (interface)** – Defines a contract for classes that can be rated.
-- **`FiltroRecomendacion`** – Applies recommendation logic based on ratings.
-- **`CalculadoraDeTiempo`** – Calculates total viewing time of selected titles.
+* **`Titulo`** now implements `Comparable<Titulo>`, allowing alphabetical ordering.
+* **`Serie`** overrides `toString()` to print formatted details.
+* **`PrincipalConListas`** demonstrates:
+
+  * Use of `List<Titulo>` and `LinkedList`.
+  * Sorting with `Collections.sort()` (natural order) and `Comparator.comparing()`.
+  * Iterating polymorphically through a list of `Titulo` objects.
+  * Filtering and classification through interfaces.
+* **Introduction to `Map` and `HashMap`** for associating keys with values efficiently.
 
 ---
 
 ## ⚙️ Features Implemented
 
-- Add and manage movies, series, and episodes.
-- Rate titles with stars based on average ratings.
-- Use interfaces to unify rating behaviors (`Clasificable`).
-- Apply inheritance to share attributes between `Pelicula`, `Serie`, and `Episodio`.
-- Implement a recommendation filter that suggests popular or highly rated content.
-- Demonstrate polymorphism through class hierarchies and interface implementation.
+* Create and manage collections of movies, series, and episodes.
+* Store titles in generic lists (`List<Titulo>`).
+* Sort lists alphabetically or by release year.
+* Apply recommendation filters using the `Clasificable` interface.
+* Demonstrate the difference between `ArrayList` and `LinkedList`.
+* Understand other list types like `Vector` and `Stack`.
+* Learn how to use `Map` and `HashMap` to manage data pairs (key–value).
 
 ---
 
 ## 🧪 Example Usage
 
 ```java
-Pelicula encanto = new Pelicula();
-encanto.setNombre("Encanto");
-encanto.setDuracionEnMinutos(120);
-encanto.evaluar(9);
-encanto.evaluar(8);
+List<Titulo> lista = new LinkedList<>();
 
-Serie casaDragon = new Serie();
-casaDragon.setNombre("House of the Dragon");
-casaDragon.setTemporadas(2);
-casaDragon.setEpisodiosPorTemporada(10);
-casaDragon.setDuracionEnMinutosPorEpisodio(50);
+Pelicula encanto = new Pelicula("Encanto", 2021);
+encanto.evalua(9);
 
-Episodio episodio = new Episodio();
-episodio.setNombre("La Casa Targaryen");
-episodio.setSerie(casaDragon);
-episodio.setTotalVisualizaciones(300);
+Pelicula avatar = new Pelicula("Avatar", 2023);
+avatar.evalua(6);
 
-FiltroRecomendacion filtro = new FiltroRecomendacion();
-filtro.filtra(encanto);
-filtro.filtra(episodio);
-````
+Serie lost = new Serie("Lost", 2000);
+
+lista.add(encanto);
+lista.add(avatar);
+lista.add(lost);
+
+Collections.sort(lista);  // natural order (by name)
+System.out.println("Sorted titles: " + lista);
+
+lista.sort(Comparator.comparing(Titulo::getFechaDeLanzamiento));
+System.out.println("Sorted by release date: " + lista);
+```
+
+### Using a HashMap
+
+```java
+Map<String, Integer> ratings = new HashMap<>();
+ratings.put("Encanto", 9);
+ratings.put("Avatar", 6);
+
+System.out.println("Encanto rating: " + ratings.get("Encanto"));
+```
+
+---
+
+## 🧾 Learning Objectives
+
+Through this part of the course, you learned to:
+
+* Use **lists and collections** to manage groups of objects.
+* Apply **sorting mechanisms** for custom and natural orderings.
+* Write **cleaner and more flexible code** by programming to interfaces.
+* Use **maps** to store relationships between keys and values.
+* Recognize when to use **ArrayList**, **LinkedList**, or other list types.
+* Strengthen your understanding of **interfaces, polymorphism, and abstraction** in real-world scenarios.
 
 ---
 
@@ -91,36 +132,31 @@ filtro.filtra(episodio);
 
 * **Java 17+**
 * **IntelliJ IDEA**
-* Object-Oriented Programming (OOP) principles
-* Standard Java SDK (no external dependencies)
-
----
-
-## 🧾 Learning Objectives
-
-Through this project, you will:
-
-* Understand the **structure of classes and objects** in Java.
-* Learn to design **hierarchies using inheritance**.
-* Apply **interfaces** and **polymorphism** for extensibility.
-* Practice **clean, modular, and reusable code**.
+* **Java Collections Framework**
+* **Comparable & Comparator**
+* **Map and HashMap**
 
 ---
 
 ## 👩‍💻 Author
 
-**Genesis (Instructor: Alura ONE Program)**
+**Bruno Darío Fernández Ellerbach (Instructor: [Alura](https://www.aluracursos.com/) [ONE](https://www.oracle.com/mx/education/oracle-next-education/) Program)**
 
-Adapted and practiced by *Jose Adrian Guillen Lamas* as part of the **Java Object-Oriented Programming G9 – ONE** training.
+Adapted and practiced by *Jose Adrian Guillen Lamas* as part of the
+
+**Java Object-Oriented Programming G9 – ONE** formation track.
 
 ---
 
 ## 📚 License
 
-This project is for educational purposes as part of the Alura ONE learning track.
-
-Feel free to clone, modify, and extend it for your own practice.
+This project is for educational purposes as part of the Alura ONE learning program.
+Feel free to clone, modify, and extend it for your own learning.
 
 ---
 
-⭐ *“Practice makes understanding. Code, break, fix, and learn — that’s the path to mastery.”*
+> ⭐ *“Collections are the backbone of Java programming — master them, and data flows naturally.”*
+
+---
+
+> 🔄 **Previous branch:** `curso2-aplicando-poo`
