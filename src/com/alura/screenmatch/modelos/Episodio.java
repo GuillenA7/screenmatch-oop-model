@@ -1,8 +1,8 @@
-package com.aluracursos.screenmatch.modelos;
+package com.alura.screenmatch.modelos;
 
-import com.aluracursos.screenmatch.calculos.Clasificacion;
+import com.alura.screenmatch.calculos.Clasificable;
 
-public class Episodio implements Clasificacion {
+public class Episodio implements Clasificable {
     private int numero;
     private String nombre;
     private Serie serie;
@@ -32,7 +32,7 @@ public class Episodio implements Clasificacion {
         this.nombre = nombre;
     }
 
-    public Serie getSerie(Serie casaDragon) {
+    public Serie getSerie() {
         return serie;
     }
 
@@ -42,7 +42,7 @@ public class Episodio implements Clasificacion {
 
     @Override
     public int getClasificacion() {
-        if (totalVisualizaciones > 100){
+        if (totalVisualizaciones > 100) {
             return 4;
         } else {
             return 2;
