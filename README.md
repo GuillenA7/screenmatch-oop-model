@@ -4,6 +4,9 @@ This project was developed as part of the **[Alura](https://www.aluracursos.com/
 
 It simulates a movie and series catalog application called **ScreenMatch**, designed to practice the core principles of **Object-Oriented Programming (OOP)** in Java.
 
+> This repository contains the different stages of the ScreenMatch project, developed during the Java Object-Oriented Programming – ONE (Alura) training program.
+> Each branch corresponds to a specific course within the program.
+
 ---
 
 ## 🧠 Project Overview
