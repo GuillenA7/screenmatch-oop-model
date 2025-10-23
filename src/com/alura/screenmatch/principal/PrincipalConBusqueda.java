@@ -1,5 +1,6 @@
 package com.alura.screenmatch.principal;
 
+import com.alura.screenmatch.excepcion.ErrorEnConversionDeDuracionException;
 import com.alura.screenmatch.modelos.Titulo;
 import com.alura.screenmatch.modelos.TituloOmdb;
 import com.google.gson.FieldNamingPolicy;
@@ -26,16 +27,16 @@ public class PrincipalConBusqueda {
                 .create();
 
         while(true){
-            System.out.println("Escriba el nombre de una película: ");
-            String busqueda = lectura.nextLine();
+            System.out.println("Escriba el nombre de una pelicula: ");
+            var busqueda = lectura.nextLine();
 
             if(busqueda.equalsIgnoreCase("salir")){
                 break;
             }
 
             String direccion = "https://www.omdbapi.com/?t="+
-                    busqueda.replace(" ", "+")
-                    +"&apikey=47fb563a";
+                    busqueda.replace(" ", "+") +
+                    "&apikey=d4d0bf92";
 
             try{
                 HttpClient client = HttpClient.newHttpClient();
@@ -46,7 +47,8 @@ public class PrincipalConBusqueda {
                         .send(request, HttpResponse.BodyHandlers.ofString());
 
                 String json = response.body();
-                System.out.println(response.body());
+                System.out.println(json);
+
                 TituloOmdb miTituloOmdb = gson.fromJson(json, TituloOmdb.class);
                 System.out.println(miTituloOmdb);
 
@@ -58,9 +60,9 @@ public class PrincipalConBusqueda {
                 System.out.println("Ocurrió un error: ");
                 System.out.println(e.getMessage());
             }catch(IllegalArgumentException e){
-                System.out.println("Error en la URI, verifique la direccion.");
-            }catch(Exception e){
-                System.out.println("Ocurrió un error inesperado.");
+                System.out.println("Error en la URI, verifique la dirección.");
+            }catch (ErrorEnConversionDeDuracionException e){
+                System.out.println(e.getMessage());
             }
         }
         System.out.println(titulos);
