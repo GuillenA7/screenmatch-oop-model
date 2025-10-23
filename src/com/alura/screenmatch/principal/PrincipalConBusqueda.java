@@ -19,7 +19,9 @@ public class PrincipalConBusqueda {
         System.out.println("Escriba el nombre de una película: ");
         String busqueda = lectura.nextLine();
 
-        String direccion = "https://www.omdbapi.com/?t="+busqueda+"&apikey=47fb563a";
+        String direccion = "https://www.omdbapi.com/?t="+
+                busqueda.replace(" ", "+")
+                +"&apikey=47fb563a";
 
         try{
             HttpClient client = HttpClient.newHttpClient();
